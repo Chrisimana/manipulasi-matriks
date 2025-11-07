@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2025-01-07T11:39:05.494075",
+    "operasi": "Buat Matriks A Kosong",
+    "detail": "Ukuran: 2x2",
+    "matriks_a": null,
+    "matriks_b": null,
+    "hasil": null
+  },
+  {
+    "timestamp": "2025-01-07T11:39:54.144602",
+    "operasi": "Buat Matriks A Acak",
+    "detail": "Ukuran: 2x2",
+    "matriks_a": null,
+    "matriks_b": null,
+    "hasil": null
+  },
+  {
+    "timestamp": "2025-01-07T11:39:54.896183",
+    "operasi": "Buat Matriks A Kosong",
+    "detail": "Ukuran: 2x2",
+    "matriks_a": null,
+    "matriks_b": null,
+    "hasil": null
+  }
+]
