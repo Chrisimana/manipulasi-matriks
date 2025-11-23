@@ -8,9 +8,6 @@
 
 **Aplikasi manipulasi matriks canggih dengan GUI modern, sistem history**
 
-[Fitur](#-fitur) • [Instalasi](#-instalasi) • [Penggunaan](#-penggunaan) • [Dokumentasi](#-dokumentasi)
-
-
 </div>
 
 ## 📋 Daftar Isi
@@ -163,37 +160,6 @@ python main.py
 | Tutup Window | Escape |
 
 ## 📚 Dokumentasi
-
-
-### Workflow Diagram
-
-```mermaid
-graph TD
-    A[User Input] --> B{GUI Interface}
-    B --> C[Buat/Edit Matriks]
-    C --> D[Validasi Input]
-    D --> E[Operasi Matriks]
-    E --> F[History Manager]
-    F --> G[Simpan ke JSON]
-    G --> H[Update Display]
-    H --> I[Visualisasi Optional]
-    I --> J[Tampilkan Hasil]
-```
-
-### Data Flow
-
-```mermaid
-sequenceDiagram
-    User->>GUI: Input Baris/Kolom
-    GUI->>Operations: Buat Matriks
-    Operations->>GUI: Return Matriks
-    User->>GUI: Pilih Operasi
-    GUI->>Operations: Eksekusi Operasi
-    Operations->>History: Simpan Operasi
-    History->>File: Save to JSON
-    Operations->>GUI: Return Hasil
-    GUI->>User: Tampilkan Hasil
-```
 
 ### File Descriptions
 
