@@ -51,8 +51,8 @@ class MatriksGUI:
         self.setup_controls(left_frame)
         self.setup_display(right_frame)
     
+    # Setup panel kontrol
     def setup_controls(self, parent):
-        """Setup panel kontrol"""
         # Matriks A controls
         a_frame = ttk.LabelFrame(parent, text="Matriks A", padding=10)
         a_frame.pack(fill=tk.X, pady=5)
@@ -125,8 +125,8 @@ class MatriksGUI:
         ttk.Button(viz_frame, text="Visualisasi Matriks B", 
                   command=lambda: self.visualisasi_matriks(self.matriks_b, "Matriks B")).pack(fill=tk.X, pady=2)
     
+    # Setup panel display
     def setup_display(self, parent):
-        """Setup panel display"""
         # Text area for matrix display
         self.text_display = scrolledtext.ScrolledText(parent, width=50, height=20, font=('Courier', 10))
         self.text_display.pack(fill=tk.BOTH, expand=True)
@@ -136,13 +136,13 @@ class MatriksGUI:
         status_bar = ttk.Label(parent, textvariable=self.status_var, relief=tk.SUNKEN)
         status_bar.pack(fill=tk.X, pady=5)
     
+    # Update text display
     def update_display(self, content):
-        """Update text display"""
         self.text_display.delete(1.0, tk.END)
         self.text_display.insert(1.0, content)
     
+    # Membuat matriks A
     def buat_matriks_a(self):
-        """Membuat matriks A"""
         try:
             baris = int(self.a_baris.get())
             kolom = int(self.a_kolom.get())
@@ -158,8 +158,8 @@ class MatriksGUI:
         except ValueError:
             messagebox.showerror("Error", "Masukkan harus berupa bilangan bulat!")
     
+    # Membuat matriks B
     def buat_matriks_b(self):
-        """Membuat matriks B"""
         try:
             baris = int(self.b_baris.get())
             kolom = int(self.b_kolom.get())
@@ -175,8 +175,8 @@ class MatriksGUI:
         except ValueError:
             messagebox.showerror("Error", "Masukkan harus berupa bilangan bulat!")
     
+    # Menjumlahkan matriks A dan B
     def tambah_matriks(self):
-        """Menjumlahkan matriks A dan B"""
         try:
             hasil = self.operations.tambah_matriks(self.matriks_a, self.matriks_b)
             self.matriks_hasil = hasil
@@ -192,8 +192,8 @@ class MatriksGUI:
         except Exception as e:
             messagebox.showerror("Error", str(e))
     
+    # Mengurangkan matriks A dan B
     def kurangi_matriks(self):
-        """Mengurangkan matriks A dan B"""
         try:
             hasil = self.operations.kurangi_matriks(self.matriks_a, self.matriks_b)
             self.matriks_hasil = hasil
@@ -209,8 +209,8 @@ class MatriksGUI:
         except Exception as e:
             messagebox.showerror("Error", str(e))
     
+    # Mengalikan matriks A dan B
     def kali_matriks(self):
-        """Mengalikan matriks A dan B"""
         try:
             hasil = self.operations.kali_matriks(self.matriks_a, self.matriks_b)
             self.matriks_hasil = hasil
@@ -226,8 +226,8 @@ class MatriksGUI:
         except Exception as e:
             messagebox.showerror("Error", str(e))
     
+    # Transpose matriks A
     def transpose_a(self):
-        """Transpose matriks A"""
         if not self.matriks_a:
             messagebox.showerror("Error", "Matriks A belum dibuat!")
             return
@@ -242,8 +242,8 @@ class MatriksGUI:
         self.history.simpan_operasi("Transpose A", self.matriks_a, None, hasil)
         self.status_var.set("Transpose matriks A berhasil!")
     
+    # Transpose matriks B
     def transpose_b(self):
-        """Transpose matriks B"""
         if not self.matriks_b:
             messagebox.showerror("Error", "Matriks B belum dibuat!")
             return
@@ -258,22 +258,22 @@ class MatriksGUI:
         self.history.simpan_operasi("Transpose B", self.matriks_b, None, hasil)
         self.status_var.set("Transpose matriks B berhasil!")
     
+    # Membuka window edit untuk matriks A
     def edit_matriks_a(self):
-        """Membuka window edit untuk matriks A"""
         if not self.matriks_a:
             messagebox.showerror("Error", "Matriks A belum dibuat!")
             return
         self.buka_window_edit(self.matriks_a, "Matriks A")
     
+    # Membuka window edit untuk matriks B
     def edit_matriks_b(self):
-        """Membuka window edit untuk matriks B"""
         if not self.matriks_b:
             messagebox.showerror("Error", "Matriks B belum dibuat!")
             return
         self.buka_window_edit(self.matriks_b, "Matriks B")
     
+    # Membuka window untuk mengedit matriks
     def buka_window_edit(self, matriks, nama):
-        """Membuka window untuk mengedit matriks"""
         edit_window = tk.Toplevel(self.root)
         edit_window.title(f"Edit {nama}")
         edit_window.geometry("500x400")
@@ -293,8 +293,8 @@ class MatriksGUI:
                 row_entries.append(entry)
             entries.append(row_entries)
         
+        # Menyimpan perubahan nilai matriks
         def simpan_perubahan():
-            """Menyimpan perubahan nilai matriks"""
             try:
                 for i in range(len(matriks)):
                     for j in range(len(matriks[0])):
@@ -311,21 +311,21 @@ class MatriksGUI:
         ttk.Button(edit_window, text="Simpan Perubahan", 
                   command=simpan_perubahan).pack(pady=10)
     
+    # Menampilkan history operasi
     def tampilkan_history(self):
-        """Menampilkan history operasi"""
         history_text = self.history.tampilkan_history()
         self.update_display(history_text)
         self.status_var.set("History operasi ditampilkan")
     
+    # Menghapus history operasi
     def hapus_history(self):
-        """Menghapus history operasi"""
         result = messagebox.askyesno("Konfirmasi", "Apakah Anda yakin ingin menghapus semua history?")
         if result:
             message = self.history.hapus_history()
             self.status_var.set(message)
     
+    # Menampilkan visualisasi matriks menggunakan matplotlib
     def visualisasi_matriks(self, matriks, nama):
-        """Menampilkan visualisasi matriks menggunakan matplotlib"""
         if not matriks:
             messagebox.showerror("Error", f"{nama} belum dibuat!")
             return

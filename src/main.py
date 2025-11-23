@@ -3,8 +3,8 @@ from matriks_operations import MatriksOperations
 from history_manager import HistoryManager
 from gui import MatriksGUI
 
+# Fungsi utama program
 def main():
-    """Fungsi utama program"""
     # Inisialisasi komponen
     operations = MatriksOperations()
     history = HistoryManager()

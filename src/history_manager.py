@@ -7,12 +7,12 @@ class HistoryManager:
         self.filename = filename
         self.ensure_directory_exists()
     
+    # Memastikan direktori data exists
     def ensure_directory_exists(self):
-        """Memastikan direktori data exists"""
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)
     
+    # Menyimpan operasi ke history
     def simpan_operasi(self, operasi, matriks_a, matriks_b=None, hasil=None):
-        """Menyimpan operasi ke history"""
         history = self.muat_history()
         
         # Format data operasi
@@ -33,16 +33,16 @@ class HistoryManager:
         with open(self.filename, 'w', encoding='utf-8') as f:
             json.dump(history, f, indent=2, ensure_ascii=False)
     
+    # Memuat history dari file
     def muat_history(self):
-        """Memuat history dari file"""
         try:
             with open(self.filename, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except (FileNotFoundError, json.JSONDecodeError):
             return []
     
+    # Menampilkan history operasi
     def tampilkan_history(self):
-        """Menampilkan history operasi"""
         history = self.muat_history()
         if not history:
             return "Belum ada history operasi."
@@ -65,8 +65,8 @@ class HistoryManager:
         
         return result
     
+    # Menghapus semua history
     def hapus_history(self):
-        """Menghapus semua history"""
         try:
             os.remove(self.filename)
             return "History berhasil dihapus."

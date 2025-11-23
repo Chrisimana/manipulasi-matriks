@@ -1,19 +1,19 @@
 class MatriksOperations:
     @staticmethod
+    # Membuat matriks baru dengan ukuran tertentu
     def buat_matriks(baris, kolom, nilai_default=0):
-        """Membuat matriks baru dengan ukuran tertentu"""
         return [[nilai_default for _ in range(kolom)] for _ in range(baris)]
     
     @staticmethod
+    # Validasi apakah dua matriks memiliki ukuran yang sama
     def validasi_ukuran(matriks_a, matriks_b):
-        """Validasi apakah dua matriks memiliki ukuran yang sama"""
         if not matriks_a or not matriks_b:
             return False
         return len(matriks_a) == len(matriks_b) and len(matriks_a[0]) == len(matriks_b[0])
     
     @staticmethod
+    # Menjumlahkan dua matriks
     def tambah_matriks(matriks_a, matriks_b):
-        """Menjumlahkan dua matriks"""
         if not MatriksOperations.validasi_ukuran(matriks_a, matriks_b):
             raise ValueError("Ukuran matriks tidak sama!")
         
@@ -24,8 +24,8 @@ class MatriksOperations:
         return hasil
     
     @staticmethod
+    # Mengurangkan dua matriks
     def kurangi_matriks(matriks_a, matriks_b):
-        """Mengurangkan dua matriks"""
         if not MatriksOperations.validasi_ukuran(matriks_a, matriks_b):
             raise ValueError("Ukuran matriks tidak sama!")
         
@@ -36,8 +36,8 @@ class MatriksOperations:
         return hasil
     
     @staticmethod
+    # Mengalikan dua matriks
     def kali_matriks(matriks_a, matriks_b):
-        """Mengalikan dua matriks"""
         if not matriks_a or not matriks_b:
             raise ValueError("Matriks tidak boleh kosong!")
         
@@ -52,8 +52,8 @@ class MatriksOperations:
         return hasil
     
     @staticmethod
+    # Mentranspose matriks
     def transpose_matriks(matriks):
-        """Mentranspose matriks"""
         if not matriks:
             return []
         
@@ -67,8 +67,8 @@ class MatriksOperations:
         return hasil
     
     @staticmethod
+    # Memformat matriks untuk ditampilkan
     def format_matriks(matriks, nama="Matriks"):
-        """Memformat matriks untuk ditampilkan"""
         if not matriks:
             return f"{nama}: Matriks kosong\n"
         
